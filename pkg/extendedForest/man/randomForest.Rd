@@ -24,7 +24,7 @@
              norm.votes=TRUE, do.trace=FALSE,
              keep.forest=!is.null(y) && is.null(xtest), corr.bias=FALSE,
              keep.inbag=FALSE, maxLevel=0, keep.group=FALSE,
-             corr.threshold=1, ...)
+             corr.threshold=1, corr.method="pearson", ...)
 \method{print}{randomForest}(x, ...)
 }
 \arguments{
@@ -103,6 +103,8 @@
   \item{corr.threshold}{If \code{maxLevel} > 0, OOB permuting is conditioned on
     partitions of variables having absolute correlation >
     \code{corr.threshold}.}
+  \item{corr.method}{Method for computing correlation between variables. 
+    Default \code{"pearson"}.}
   \item{keep.group}{If \code{TRUE} keep diagnostic information on the
     partitioning for the importance calculation.}
   \item{...}{optional parameters to be passed to the low level function

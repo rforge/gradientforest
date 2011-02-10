@@ -13,7 +13,7 @@ mylevels <- function(x) if (is.factor(x)) levels(x) else 0
              norm.votes=TRUE, do.trace=FALSE,
              keep.forest=!is.null(y) && is.null(xtest), corr.bias=FALSE,
              keep.inbag=FALSE, maxLevel=0, keep.group=FALSE,
-             corr.threshold=1, ...) {
+             corr.threshold=1, corr.method="pearson", ...) {
     addclass <- is.null(y)
     classRF <- addclass || is.factor(y)
     if (!classRF && length(unique(y)) <= 5) {
@@ -58,7 +58,7 @@ mylevels <- function(x) if (is.factor(x)) levels(x) else 0
     if (!is.null(ytest) && any(is.na(ytest))) stop("NA not permitted in ytest")
 
     if (is.data.frame(x)) {
-        corr <- cor(x)
+        corr <- cor(x, method=corr.method)
         corr[is.na(corr)] <- 0
         xlevels <- lapply(x, mylevels)
         ncat <- sapply(xlevels, length)
@@ -81,7 +81,7 @@ mylevels <- function(x) if (is.factor(x)) levels(x) else 0
             xtest <- data.matrix(xtest)
         }
     } else {
-        corr <- cor(x)
+        corr <- cor(x, method=corr.method)
         ncat <- rep(1, p)
         xlevels <- as.list(rep(0, p))
     }
