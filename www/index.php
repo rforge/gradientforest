@@ -41,11 +41,13 @@ while (!feof($handle)) {
 fclose($handle);
 echo $contents; } ?>
 
+
+
 <!-- end of project description -->
 
-<p> No content added. </p>
-
-<p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
+<p> The overview vignette for <strong>extendedForest</strong> is <a href="Conditional-importance.pdf"><strong>here</strong></a>. </p>
+<p> The overview vignette for <strong>gradientForest</strong> is <a href="biodiversity-survey.pdf"><strong>here</strong></a>. </p>
+<p> The <strong>project summary page</strong> is <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 
 </body>
 </html>
