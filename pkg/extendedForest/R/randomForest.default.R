@@ -59,8 +59,8 @@ mylevels <- function(x) if (is.factor(x)) levels(x) else 0
 
     if (is.data.frame(x)) {
         # measure correlation between numeric and ordered factors
-        xc <- as.data.frame(lapply(df, function(x) if(is.numeric(x)) x else 
-          if(is.ordered(x)) as.numeric(x) else rep(NA,length(x))))
+        xc <- as.data.frame(lapply(x, function(y) if(is.numeric(y)) y else 
+          if(is.ordered(y)) as.numeric(y) else rep(NA,length(y))))
         corr <- cor(xc, method=corr.method)
         corr[is.na(corr)] <- 0
         xlevels <- lapply(x, mylevels)
