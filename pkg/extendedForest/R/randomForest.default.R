@@ -1,7 +1,7 @@
 ## mylevels() returns levels if given a factor, otherwise 0.
 mylevels <- function(x) if (is.factor(x)) levels(x) else 0
 
-"randomForest.default" <-
+"randomForest.default" <- 
     function(x, y=NULL,  xtest=NULL, ytest=NULL, ntree=500,
              mtry=if (!is.null(y) && !is.factor(y)) 
              max(floor(ncol(x)/3), 1) else floor(sqrt(ncol(x))),
