@@ -1,10 +1,10 @@
 Package: extendedForest
 Title: Breiman and Cutler's random forests for classification and regression
 Version: 1.6
-Date: 2012-03-06
+Date: 2014-09-05
 Depends: R (>= 2.0.0), stats
 Suggests: RColorBrewer, MASS, lattice
-Author: Fortran original by Leo Breiman and Adele Cutler, R port by Andy Liaw and Matthew Wiener, modifications for split improvement by Nick Ellis
+Author: Fortran original by Leo Breiman and Adele Cutler, R port by Andy Liaw and Matthew Wiener, modifications for split improvement by Nick Ellis 
 Description: Classification and regression based on a forest of trees using random inputs.
 Maintainer: Nick Ellis <nick.ellis@csiro.au>
 License: GPL version 2 or later
