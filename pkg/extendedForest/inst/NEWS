@@ -1,4 +1,11 @@
-New branch created by Nick Ellis
+
+Change in 1.6
+
+* Vignette demonstrating difference between conditional and marginal importance.
+
+* Correction to correlation calculation to allow for ordered factor.
+
+* Option for type of correlation measure such as Kendall.
 
 Change in 1.4
 
@@ -18,6 +25,8 @@ Change in 1.1
   for classification trees.
 
 Change in 1.0
+
+* New branch created from randomForest version 4.5-28.
 
 * Save improvement in node purity at the level of variable split.
   For Regression forests only.

@@ -5,7 +5,7 @@ rfImpute.formula <- function(x, data, ..., subset) {
     if (!inherits(x, "formula"))
         stop("method is only for formula objects")
     call <- match.call()
-    m <- match.call(expand = FALSE)
+    m <- match.call(expand.dots = FALSE)
     names(m)[2] <- "formula"
     if (is.matrix(eval(m$data, parent.frame())))
         m$data <- as.data.frame(data)
