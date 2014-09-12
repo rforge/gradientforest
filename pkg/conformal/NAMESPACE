@@ -1,0 +1,6 @@
+useDynLib(conformal)
+
+export(Beta2Origin, C2listxy, C2matrix, C2R, conformalFit, conformalPredict,
+listxy2C, listxy2R, matrix2C, matrix2R, matrixBeta2Origin, matrixOrigin2Beta,
+Origin2Beta, R2C, R2listxy, R2matrix, RBeta2Origin, region.inside, ROrigin2Beta)
+
