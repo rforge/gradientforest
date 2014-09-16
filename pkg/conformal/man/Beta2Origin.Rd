@@ -45,14 +45,16 @@ CircleGrid <- function(nradial) { # create a random pattern to fill a disk
   r <- seq(0,1,len=nradial)
   nth <- pmax(1,ceiling(2*pi*r*(nradial-1)))
   th0 <- runif(nth,-pi/nth,pi/nth)
-  list(x=unlist(lapply(1:nradial,function(i,r,nth,th0) r[i]*cos(th0[i]+seq(0,2*pi,len=nth[i]+1)[-nth[i]-1]),r=r,nth=nth,th0=th0)),
-       y=unlist(lapply(1:nradial,function(i,r,nth,th0) r[i]*sin(th0[i]+seq(0,2*pi,len=nth[i]+1)[-nth[i]-1]),r=r,nth=nth,th0=th0)))
+  list(
+    x=unlist(lapply(1:nradial, function(i,r,nth,th0)
+      r[i]*cos(th0[i]+seq(0,2*pi,len=nth[i]+1)[-nth[i]-1]),r=r,nth=nth,th0=th0)),
+    y=unlist(lapply(1:nradial, function(i,r,nth,th0)
+      r[i]*sin(th0[i]+seq(0,2*pi,len=nth[i]+1)[-nth[i]-1]),r=r,nth=nth,th0=th0))
+  )
 }
 cDisk <- R2C(listxy2R(CircleGrid(30)))
 centre <- R2C(c(0.5,-0.1))
-#centre <- R2C(listxy2R(locator(1)))
-cPred <- Origin2Beta(R2C(disk), centre)
-cDisk <- R2C(disk)
+cPred <- Origin2Beta(cDisk, centre)
 cols <- hsv(h=Arg(cDisk)/2/pi+0.5,s=pmin(1,Mod(cDisk)))
 par(mfrow=c(1,2))
 plot(cDisk, col=cols, asp=1, pch=16, main="Colour wheel")

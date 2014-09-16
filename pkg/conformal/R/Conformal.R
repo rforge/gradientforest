@@ -11,7 +11,7 @@ matrixBeta2Origin <- function(x,x0) R2matrix(C2R(Beta2Origin(R2C(matrix2R(x)),R2
 C2R <- function(z) as.vector(rbind(Re(z),Im(z)))
 listxy2R <- function(lxy) as.vector(do.call("rbind",lxy))
 listxy2C <- function(x) R2C(listxy2R(x))
-R2C <- function(ww) if(is.complex(ww)) ww else complex(real=matrix(ww,,2,T)[,1],imag=matrix(ww,,2,T)[,2])
+R2C <- function(ww) if(is.complex(ww)) ww else complex(real=matrix(ww,,2,T)[,1],imaginary=matrix(ww,,2,T)[,2])
 C2listxy <- function(z) list(x=Re(z),y=Im(z))
 R2listxy <- function(z) C2listxy(R2C(z))
 

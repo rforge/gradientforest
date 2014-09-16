@@ -25,8 +25,12 @@ CircleGrid <- function(nradial) { # create a random pattern to fill a disk
   r <- seq(0,1,len=nradial)
   nth <- pmax(1,ceiling(2*pi*r*(nradial-1)))
   th0 <- runif(nth,-pi/nth,pi/nth)
-  list(x=unlist(lapply(1:nradial,function(i,r,nth,th0) r[i]*cos(th0[i]+seq(0,2*pi,len=nth[i]+1)[-nth[i]-1]),r=r,nth=nth,th0=th0)),
-       y=unlist(lapply(1:nradial,function(i,r,nth,th0) r[i]*sin(th0[i]+seq(0,2*pi,len=nth[i]+1)[-nth[i]-1]),r=r,nth=nth,th0=th0)))
+  list(
+    x=unlist(lapply(1:nradial, function(i,r,nth,th0)
+      r[i]*cos(th0[i]+seq(0,2*pi,len=nth[i]+1)[-nth[i]-1]),r=r,nth=nth,th0=th0)),
+    y=unlist(lapply(1:nradial, function(i,r,nth,th0)
+      r[i]*sin(th0[i]+seq(0,2*pi,len=nth[i]+1)[-nth[i]-1]),r=r,nth=nth,th0=th0))
+  )
 }
 disk <- listxy2R(CircleGrid(30))
 poly <- list(
