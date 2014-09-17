@@ -52,7 +52,7 @@ poly <- list(
 )
 #poly <- locator(type='l')
 fit <- conformalFit(poly)
-pred <- conformalPredict(fit, disk, polygon2disk=F)
+pred <- conformalPredict(fit, disk, polygon2disk=FALSE)
 cDisk <- R2C(disk)
 cPred <- R2C(pred)
 cols <- hsv(h=Arg(cDisk)/2/pi+0.5,s=pmin(1,Mod(cDisk)))
