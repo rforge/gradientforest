@@ -2,7 +2,7 @@ Origin2Beta <- function(z,beta) (beta+z)/(1+Conj(beta)*z) # map disk to disk sen
 Beta2Origin <- function(z,beta) (z-beta)/(1-Conj(beta)*z) # map disk to disk sending beta to 0
 ROrigin2Beta <- function(x,x0) C2R(Origin2Beta(R2C(x),R2C(x0)))
 RBeta2Origin <- function(x,x0) C2R(Origin2Beta(R2C(x),R2C(x0)))
-R2matrix <- function(x) matrix(x,,2,T)
+R2matrix <- function(x) matrix(x,,2,TRUE)
 matrix2R <- function(x) as.vector(t(x))
 matrix2C <- function(x) R2C(matrix2R(x))
 C2matrix <- function(x) R2matrix(C2R(x))
@@ -11,7 +11,7 @@ matrixBeta2Origin <- function(x,x0) R2matrix(C2R(Beta2Origin(R2C(matrix2R(x)),R2
 C2R <- function(z) as.vector(rbind(Re(z),Im(z)))
 listxy2R <- function(lxy) as.vector(do.call("rbind",lxy))
 listxy2C <- function(x) R2C(listxy2R(x))
-R2C <- function(ww) if(is.complex(ww)) ww else complex(real=matrix(ww,,2,T)[,1],imaginary=matrix(ww,,2,T)[,2])
+R2C <- function(ww) if(is.complex(ww)) ww else complex(real=matrix(ww,,2,TRUE)[,1],imaginary=matrix(ww,,2,TRUE)[,2])
 C2listxy <- function(z) list(x=Re(z),y=Im(z))
 R2listxy <- function(z) C2listxy(R2C(z))
 
@@ -31,7 +31,7 @@ function(test, vertices)
 # col1 = x-coords, col2 = y-coords
 #
 	n <- nrow(vertices) - 1
-	if(!is.matrix(test)) test <- matrix(test, nrow = 1, byrow = T)	#
+	if(!is.matrix(test)) test <- matrix(test, nrow = 1, byrow = TRUE)	#
 # translate to coords centered at each test point
 	x <-  - outer(test[, 1], vertices[1:n, 1], "-")
 	y <-  - outer(test[, 2], vertices[1:n, 2], "-")	#
@@ -42,7 +42,7 @@ function(test, vertices)
 #
 # sum angles about each test point
 	theta <- abs(theta %*% rep(1, n))
-	ifelse(abs(theta - 2 * pi) < 1e-006, T, F)
+	ifelse(abs(theta - 2 * pi) < 1e-006, TRUE, FALSE)
 }
 
 
