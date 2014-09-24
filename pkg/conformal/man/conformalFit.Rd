@@ -22,7 +22,7 @@ conformalFit(xypoly, wc = c(mean(xypoly$x), mean(xypoly$y)), nptsq = 12)
   normalized so that \code{z[length(z)] == 1}. The formula for the mapping is as follows,
   where \eqn{betam_k} is the external angle in the polygon at vertex \eqn{k} divided by \eqn{-pi}.
 \deqn{
-w=w_c+c\integral_0^z \prod_{k=1}^n (1-z/z_k)^{\beta_k}dz
+w=w_c+c\int_0^z \prod_{k=1}^n (1-z/z_k)^{\beta_k}dz
 }
 }
 \value{
