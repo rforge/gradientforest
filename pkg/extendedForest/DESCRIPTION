@@ -6,6 +6,6 @@ Depends: R (>= 2.0.0), stats
 Suggests: RColorBrewer, MASS, lattice
 Author: Fortran original by Leo Breiman and Adele Cutler, R port by Andy Liaw and Matthew Wiener, modifications for split improvement by Nick Ellis 
 Description: Classification and regression based on a forest of trees using random inputs.
-Maintainer: Nick Ellis <nick.ellis@csiro.au>
+Maintainer: Nick Ellis <nickellis999@gmail.com>
 License: GPL (>= 2)
 URL: http://stat-www.berkeley.edu/users/breiman/RandomForests

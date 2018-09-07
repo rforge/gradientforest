@@ -4,7 +4,7 @@ Title: Conformal mapping from a polygon to a disk
 Version: 1.1
 Date: 2012-03-27
 Author: Nick Ellis
-Maintainer: Nick Ellis <nick.ellis@csiro.au>
+Maintainer: Nick Ellis <nickellis999@gmail.com>
 Description: Conformal mapping using Trefethen FORTRAN implementation of the Schwarz-Christoffel transformation
 License: GPL (>= 2)
 LazyLoad: yes
