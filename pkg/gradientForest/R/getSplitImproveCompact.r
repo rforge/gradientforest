@@ -6,7 +6,8 @@
 
 #   extract all trees to a matrix and select for splits with some improvement
   	trees <- lapply(1:fit$ntree, function(k) try(getTree(fit, k),silent=TRUE)) #Nick Ellis 10/12/2009
-	  ok <- sapply(trees, class) != "try-error"
+    ok <- sapply(trees, class) != "try-error"
+    ok <- apply(ok, 2, all)
   	tmp <- do.call("rbind", lapply((1:fit$ntree)[ok], function(k) cbind(tree = k, trees[[k]])))
     tmp <- tmp[tmp[,"status"]==-3 & zapsmall(tmp[,"improve"]) > 0,c("split var","split point","improve")]
     colnames(tmp) <- c("var_n","split","improve")
@@ -14,7 +15,7 @@
 
 #   assign the split to the appropriate bin and aggregate importance in each bin
     Xnames <- colnames(bins)
-    tmp <- data.frame(var=Xnames[tmp[,"var_n"]], tmp, bin=rep(0,nrow(tmp)))
+    tmp <- data.frame(var=factor(Xnames[tmp[,"var_n"]], levels = Xnames), tmp, bin=rep(0,nrow(tmp)))
     for(p in Xnames) {
         if(any(sub <- with(tmp,var==p)))
           tmp$bin[sub] <- as.numeric(cut(tmp$split[sub], bins[,p], include=TRUE, ordered=TRUE))

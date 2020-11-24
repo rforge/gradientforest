@@ -1,6 +1,6 @@
 combined.cumulative.importance.plot <-
 function (obj,weight=c("uniform","species","rsq.total","rsq.mean","site","site.species","site.rsq.total","site.rsq.mean")[3],
-use.diff=FALSE, prednames=names(obj$X)[-1], show.weights=FALSE, show.gf.names=TRUE, sort=TRUE, ...)
+use.diff=FALSE, prednames=names(obj$gf.names), show.weights=FALSE, show.gf.names=TRUE, sort=TRUE, ...)
 {
     if ((nw <- length(weight)) > 1) show.gf.names <- show.weights <- FALSE
     gearnames <- names(obj$dens)[-1]
@@ -10,7 +10,7 @@ use.diff=FALSE, prednames=names(obj$X)[-1], show.weights=FALSE, show.gf.names=TR
         dens <- density(obj,predictor,gf.name=gear,gridded=T)
         if (use.diff) cu$y <- diff(c(0,cu$y))
         data.frame(predictor=predictor,gf.name=gear,value=cu$x,CU=cu$y,dens=dens$y)
-      })))      
+      })))
     CU <- c(CU,
       lapply(prednames, function(predictor) do.call("rbind",lapply(weight, function(w) {
         cu <- cumimp(obj,predictor,weight=w)
@@ -19,6 +19,8 @@ use.diff=FALSE, prednames=names(obj$X)[-1], show.weights=FALSE, show.gf.names=TR
       })))
     )
     CU <- do.call("rbind",CU)
+    CU$predictor <- factor(CU$predictor)
+    CU$gf.name <- factor(CU$gf.name)
     imp <- importance(obj)
     o <- order(-imp)
     CU$predictor <- ordered(CU$predictor, levels=if(sort) names(sort(-imp)) else prednames)

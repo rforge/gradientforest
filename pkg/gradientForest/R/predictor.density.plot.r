@@ -5,6 +5,7 @@ function (obj, ...)
     dens <- do.call("rbind", lapply(names(obj$dens), function(gear) cbind(gf.name=gear,bind.varXY(obj$dens[[gear]]))))
     o <- order(-importance(obj))
     dens$predictor <- ordered(dens$predictor, levels=names(sort(-importance(obj))))
+    dens$gf.name <- factor(dens$gf.name)
     spl <- trellis.par.get("superpose.line")
     n <- length(levels(dens$gf.name))
     spl$lwd[1] <- 2

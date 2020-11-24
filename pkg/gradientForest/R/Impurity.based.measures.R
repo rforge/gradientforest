@@ -6,6 +6,7 @@
     dens <- lapply(dens,whiten,lambda=0.90) # hard-coded whitening
     names(dens) <- names(obj$X)
     res <- do.call("rbind", lapply(names(obj$result), function(spec) cbind(spec=spec,obj$result[[spec]]))) #added by Smith 13/05/2009
+    res$spec <- as.factor(res$spec)
     res$improve <- pmax(0,res$improve)
     res$rsq <- pmax(0,res$rsq)   #added by Ellis 12/05/2009
     res$improve.tot <- tapply(res$improve,res$spec,sum)[res$spec]

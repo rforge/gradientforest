@@ -48,7 +48,7 @@ function (x, plot.type = c("Overall.Importance","Predictor.Ranges",
     
                     
  if(plot.options[plot.option]=="Cumulative.Importance"){	
-    plot.args.def <- amend.args(list(weight="rsq.total", use.diff=FALSE, prednames=names(x$X)[-1], 
+    plot.args.def <- amend.args(list(weight="rsq.total", use.diff=FALSE, prednames=names(x$gf.names),
       show.weights=FALSE, show.gf.names=TRUE, sort=TRUE), plot.args)
     plot.args.def<- amend.args(plot.args.def,list(...))     
     if(!is.null(par.args)) par(par.args)

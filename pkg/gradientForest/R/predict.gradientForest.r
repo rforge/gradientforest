@@ -10,16 +10,22 @@ function (object, newdata, extrap=TRUE, ...)
     if(!inherits(newdata,"data.frame"))
         stop("newdata must be a data.frame")
     newnames <- names(newdata)
-    if(!all(ok <- newnames %in% names(object$X))) {
+    if(!all(ok <- newnames %in% as.character(unique(object$res$var)))) {
         badnames <- paste(newnames[!ok], collapse=", ")
         stop(paste("the following predictors are not in the gradientForest:\n\t",badnames,sep=""))
     }
     for (varX in newnames) {
+          tmp.extrap <- extrap
         ci <- cumimp(object, varX, ...)
+        if(length(ci$x) == 1){
+          ci$x <- rep(ci$x,2)
+          ci$y <- rep(ci$y,2)
+          tmp.extrap <- FALSE
+        }
         xold <- range(ci$x)
         yold <- range(ci$y)
         xnew <- range(newdata[,varX],na.rm=T)
-        if (extrap)
+        if (tmp.extrap)
           ynew <- linfun(xold, yold, xnew)
         else 
           ynew <- yold
