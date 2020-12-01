@@ -2,7 +2,9 @@
 #   return a data-frame: var name, rsq, var number, split value, improvement
     trees <- lapply(1:fit$ntree, function(k) try(getTree(fit, k),silent=TRUE)) #Nick Ellis 10/12/2009
     ok <- sapply(trees, class) != "try-error"
-    ok <- apply(ok, 2, all)
+    if(!is.vector(ok)){
+      ok <- apply(ok, 2, all)
+    }
     tmp <- do.call("rbind", lapply((1:fit$ntree)[ok], function(k) cbind(tree =
                                                                           k, trees[[k]])))
     tmp <- tmp[tmp[,"status"]==-3 & zapsmall(tmp[,"improve"]) > 0,c("split var","split point","improve")]
